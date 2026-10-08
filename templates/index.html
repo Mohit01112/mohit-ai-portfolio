@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ data.name }} // Stark-Net Portfolio</title>
+<meta name="description" content="{{ data.summary }}">
+<meta property="og:title" content="{{ data.name }} - {{ data.role }}">
+<meta property="og:description" content="{{ data.summary }}">
+<style>
+:root{--red:#e60012;--cyan:#4deeea;--green:#00ff66;--bg:#030408;--glass:rgba(8,12,22,.78)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:#d7f7f5;font-family:'Courier New',ui-monospace,monospace;overflow:hidden}
+canvas{position:fixed;inset:0}
+#fx{z-index:0}#gl{z-index:1}
+.scan{position:fixed;inset:0;z-index:5;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
+.vig{position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.85) 100%)}
+.spider{position:fixed;top:0;z-index:4;width:34px;transform-origin:top center;animation:sw 4s ease-in-out infinite;pointer-events:none}
+.spider i{display:block;width:1px;margin:0 auto;background:rgba(255,255,255,.45)}
+.spider svg{width:30px;height:30px;display:block;margin-left:2px;stroke:var(--red);fill:var(--red)}
+@keyframes sw{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+.layer{position:fixed;inset:0;z-index:6;display:none}
+.layer.on{display:block}
+.card{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(77,238,234,.35);box-shadow:0 0 30px rgba(77,238,234,.12),inset 0 0 0 1px rgba(230,0,18,.15);
+clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+#s1 .card{position:absolute;left:50%;bottom:6vh;transform:translateX(-50%);width:min(560px,92vw);padding:26px;text-align:center}
+.tag{color:var(--green);font-size:12px;letter-spacing:3px}
+h1{font-size:clamp(20px,3.4vw,30px);letter-spacing:2px;margin:10px 0 6px;color:#fff;text-shadow:0 0 12px var(--red)}
+.sub{color:#a9c9d6;font-size:14px;line-height:1.5;margin-bottom:18px}
+.btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:12px 22px;font:700 14px inherit;font-family:inherit;letter-spacing:2px;cursor:pointer;text-decoration:none;box-shadow:0 0 18px rgba(230,0,18,.6);transition:.2s}
+.btn:hover{background:#fff;color:var(--red);box-shadow:0 0 28px var(--cyan)}
+.btn.o{background:transparent;border:1px solid var(--cyan);color:var(--cyan);box-shadow:none;padding:7px 12px;font-size:12px}
+.btn.o:hover{background:var(--cyan);color:#000}
+#s2 .card{position:absolute;left:50%;bottom:8vh;transform:translateX(-50%);width:min(640px,94vw);padding:22px;font-size:14px;line-height:1.7;color:var(--green)}
+#tline{white-space:pre-wrap;min-height:90px}
+#inrow{display:none;align-items:center;gap:8px;margin-top:8px}
+#inrow input{flex:1;background:transparent;border:0;border-bottom:1px solid var(--cyan);color:var(--cyan);font:inherit;font-size:16px;outline:none;padding:4px;text-transform:uppercase}
+.cur::after{content:'\2588';animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+#grid{position:absolute;right:2vw;top:4vh;bottom:4vh;width:58vw;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start;padding-right:6px;
+transform:translateX(110%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+#s3.on #grid{transform:none}
+#grid::-webkit-scrollbar{width:6px}#grid::-webkit-scrollbar-thumb{background:var(--red)}
+.p{padding:18px}.p.w{grid-column:1/-1}
+.p h2{font-size:13px;letter-spacing:3px;color:var(--cyan);margin-bottom:10px;border-bottom:1px dashed rgba(77,238,234,.3);padding-bottom:6px}
+.p h2 b{color:var(--red)}
+.p p,.p li{font-size:13px;line-height:1.6;color:#cfe;list-style:none}
+.p li::before{content:'> ';color:var(--green)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:4px 9px;border:1px solid rgba(0,255,102,.5);color:var(--green);background:rgba(0,255,102,.06)}
+.chip:hover{background:var(--green);color:#000}
+.projs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.pr{border:1px solid rgba(230,0,18,.5);padding:12px;background:rgba(230,0,18,.05);display:flex;flex-direction:column;gap:8px;transition:.2s}
+.pr:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 0 18px rgba(77,238,234,.25)}
+.pr h3{color:#fff;font-size:15px}.pr small{color:#9bb}.pr .a{display:flex;gap:8px;margin-top:auto}
+.p input{width:100%;background:transparent;border:1px solid var(--cyan);color:var(--cyan);font:inherit;font-size:13px;padding:8px;margin-bottom:12px;outline:none}
+#moreList .pr{padding:10px}#moreList h3{font-size:13px}
+.hello{grid-column:1/-1;color:var(--green);font-size:13px;letter-spacing:2px}
+.hello em{color:var(--red);font-style:normal}
+@media(max-width:820px){
+#grid{left:3vw;right:3vw;width:auto;top:44vh;bottom:2vh;grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas><canvas id="gl"></canvas>
+<div class="scan"></div><div class="vig"></div>
+
+<section id="s1" class="layer on"><div class="card">
+  <div class="tag">// {{ data.name|upper }} &middot; {{ data.role|upper }}</div>
+  <h1>STARK-NET // SPIDER-MAN PROTOCOL</h1>
+  <p class="sub">Dormant lab detected. Neural data fabric online. Mask HUD offline.</p>
+  <button class="btn" id="go">[ INITIALIZE MASK HUD ]</button>
+</div></section>
+
+<section id="s2" class="layer"><div class="card">
+  <div id="tline" class="cur"></div>
+  <div id="inrow"><span>&gt;</span><input id="handle" maxlength="24" autocomplete="off" spellcheck="false" aria-label="Operator designation"></div>
+</div></section>
+
+<section id="s3" class="layer"><div id="grid"></div></section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const DATA = {{ data|tojson }};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- Spiders ---------- */
+const SP = '<svg viewBox="0 0 30 30" stroke-width="1.4"><ellipse cx="15" cy="17" rx="5" ry="6"/><circle cx="15" cy="9" r="3"/><path fill="none" d="M10 14L2 8M10 17L1 17M10 20L3 27M20 14L28 8M20 17L29 17M20 20L27 27"/></svg>';
+[[8,110,4.2,0],[47,70,5,-1],[88,150,3.8,-2]].forEach(([l,h,d,dl]) => {
+  const e = document.createElement('div'); e.className = 'spider';
+  e.style.cssText = `left:${l}%;animation-duration:${d}s;animation-delay:${dl}s`;
+  e.innerHTML = `<i style="height:${h}px"></i>${SP}`; document.body.appendChild(e);
+});
+
+/* ---------- Neural Data Fabric ---------- */
+const fx = $('#fx'), c = fx.getContext('2d'); let W, H, nodes = [], parts = [];
+function size(){ W = fx.width = innerWidth; H = fx.height = innerHeight;
+  const n = Math.min(90, Math.floor(W*H/18000));
+  nodes = Array.from({length:n}, () => ({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}));
+  parts = Array.from({length:Math.floor(n*.8)}, () => ({a:0|Math.random()*n,b:0|Math.random()*n,t:Math.random(),s:.004+Math.random()*.008}));
+}
+function web(x, dir){
+  c.strokeStyle = 'rgba(255,255,255,.22)'; c.lineWidth = 1; const R = Math.min(300, W*.28), N = 7;
+  for(let i=0;i<=N;i++){const a=i/N*Math.PI/2;c.beginPath();c.moveTo(x,0);c.lineTo(x+dir*Math.cos(a)*R,Math.sin(a)*R);c.stroke();}
+  for(let r=1;r<=6;r++){const rr=R*r/6;c.beginPath();
+    for(let i=0;i<=N;i++){const a=i/N*Math.PI/2,k=rr*(i%2?.9:1),px=x+dir*Math.cos(a)*k,py=Math.sin(a)*k;i?c.lineTo(px,py):c.moveTo(px,py);}c.stroke();}
+}
+function fabric(){
+  c.clearRect(0,0,W,H);
+  nodes.forEach(n => {n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;});
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+    const a=nodes[i],b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<150){c.strokeStyle=`rgba(77,238,234,${.16*(1-d/150)})`;c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.stroke();}
+  }
+  nodes.forEach(n => {c.fillStyle='rgba(77,238,234,.9)';c.shadowColor='#4deeea';c.shadowBlur=8;c.beginPath();c.arc(n.x,n.y,1.8,0,7);c.fill();});
+  c.shadowColor='#00ff66';
+  parts.forEach(p => {p.t+=p.s;if(p.t>1){p.t=0;p.a=p.b;p.b=0|Math.random()*nodes.length;}
+    const a=nodes[p.a],b=nodes[p.b];if(!a||!b)return;c.fillStyle='#00ff66';c.beginPath();c.arc(a.x+(b.x-a.x)*p.t,a.y+(b.y-a.y)*p.t,1.6,0,7);c.fill();});
+  c.shadowBlur=0; web(0,1); web(W,-1);
+  requestAnimationFrame(fabric);
+}
+addEventListener('resize', size); size(); fabric();
+
+/* ---------- Three.js: Spider-Man Mask ---------- */
+const gl = $('#gl'), ren = new THREE.WebGLRenderer({canvas:gl,antialias:true,alpha:true});
+ren.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(45,1,.1,100);
+scene.add(new THREE.AmbientLight(0x334455,1.1));
+const l1 = new THREE.PointLight(0x4deeea,1.6,30); l1.position.set(-4,3,5); scene.add(l1);
+const l2 = new THREE.PointLight(0xe60012,1.8,30); l2.position.set(4,-2,5); scene.add(l2);
+const mask = new THREE.Group(), head = new THREE.Group(); mask.add(head); scene.add(mask);
+const skull = new THREE.Mesh(new THREE.SphereGeometry(1,48,48), new THREE.MeshStandardMaterial({color:0xe60012,roughness:.45,metalness:.35}));
+skull.scale.set(.85,1.1,.9); head.add(skull);
+const webM = new THREE.Mesh(new THREE.SphereGeometry(1.012,22,16), new THREE.MeshBasicMaterial({color:0x1a0004,wireframe:true,transparent:true,opacity:.55}));
+webM.scale.copy(skull.scale); head.add(webM);
+function lens(side){
+  const s = new THREE.Shape(); s.moveTo(0,.2);s.quadraticCurveTo(.3,.32,.46,.02);s.quadraticCurveTo(.3,-.2,0,-.12);s.quadraticCurveTo(-.04,.05,0,.2);
+  const g = new THREE.Group();
+  const o = new THREE.Mesh(new THREE.ShapeGeometry(s), new THREE.MeshBasicMaterial({color:0x050505})); o.scale.set(1.18,1.25,1); o.position.set(-.03,-.01,-.002); g.add(o);
+  g.add(new THREE.Mesh(new THREE.ShapeGeometry(s), new THREE.MeshBasicMaterial({color:0x4deeea})));
+  g.scale.x = side; g.position.set(side*.1,.12,.84); g.rotation.set(0,side*-.42,side*.28); return g;
+}
+const eyes = [lens(1),lens(-1)]; eyes.forEach(e => head.add(e));
+const ring = new THREE.Group(); scene.add(ring); mask.add(ring);
+ring.add(new THREE.Mesh(new THREE.TorusGeometry(1.75,.012,8,160), new THREE.MeshBasicMaterial({color:0x4deeea})));
+const tk = []; for(let i=0;i<72;i++){const a=i/72*Math.PI*2,r0=1.82,r1=i%6?1.88:1.97;tk.push(Math.cos(a)*r0,Math.sin(a)*r0,0,Math.cos(a)*r1,Math.sin(a)*r1,0);}
+const tg = new THREE.BufferGeometry(); tg.setAttribute('position',new THREE.Float32BufferAttribute(tk,3));
+ring.add(new THREE.LineSegments(tg,new THREE.LineBasicMaterial({color:0x00ff66})));
+const ring2 = new THREE.Mesh(new THREE.TorusGeometry(1.5,.006,8,120), new THREE.MeshBasicMaterial({color:0xe60012,transparent:true,opacity:.7})); ring2.rotation.x=1.2; mask.add(ring2);
+
+let mx = 0, my = 0; addEventListener('pointermove', e => {mx = e.clientX/innerWidth*2-1; my = e.clientY/innerHeight*2-1;});
+const T = {z:5.2,x:0,y:0,s:1}, cur = {z:7,x:0,y:0,s:1};
+function layout(){
+  const w=innerWidth,h=innerHeight; ren.setSize(w,h); cam.aspect=w/h; cam.updateProjectionMatrix();
+  if(stage===3){ if(w>820){T.x=-1.9;T.y=0;T.s=1;} else {T.x=0;T.y=1.35;T.s=.55;} }
+  else {T.x=0;T.y=w>820?.3:.9;T.s=w>820?1:.8;}
+}
+let stage = 1; addEventListener('resize', layout); layout();
+(function loop(t){
+  ['z','x','y','s'].forEach(k => cur[k] += (T[k]-cur[k])*.05);
+  cam.position.z = cur.z; mask.position.set(cur.x,cur.y,0); mask.scale.setScalar(cur.s);
+  head.rotation.y += ((mx*.55)-head.rotation.y)*.06; head.rotation.x += ((my*.3)-head.rotation.x)*.06;
+  ring.rotation.z = t*.0004; ring.rotation.y = mx*.3; ring2.rotation.z = -t*.0007;
+  const p = .75+.25*Math.sin(t*.004); eyes.forEach(e => e.children[1].material.color.setRGB(.3*p,.93*p,.92*p));
+  ren.render(scene,cam); requestAnimationFrame(loop);
+})(0);
+
+/* ---------- Narrative ---------- */
+function show(n){stage=n;document.querySelectorAll('.layer').forEach((e,i)=>e.classList.toggle('on',i+1===n));}
+async function type(el, text, speed=22){ for(const ch of text){ el.textContent += ch; await new Promise(r => setTimeout(r,speed)); } }
+$('#go').onclick = async () => {
+  T.z = 3.4; show(2);
+  const t = $('#tline'), lines = ['> BOOTING STARK-NET NODE ........ OK\n','> BIOMETRIC HANDSHAKE REQUIRED\n','> ENTER OPERATOR DESIGNATION (e.g. RECRUITER, ROOT):'];
+  for(const l of lines) await type(t,l);
+  t.classList.remove('cur'); $('#inrow').style.display='flex'; $('#handle').focus();
+};
+$('#handle').addEventListener('keydown', e => {
+  if(e.key !== 'Enter') return;
+  const h = e.target.value.trim().toUpperCase().slice(0,24); if(!h) return;
+  buildGrid(h); T.z = 5.2; show(3); layout();
+});
+
+/* ---------- Portfolio HUD ---------- */
+function buildGrid(handle){
+  const d = DATA, ct = d.contact, ed = d.education;
+  const panel = (t, body, w) => `<div class="card p ${w?'w':''}"><h2><b>//</b> ${t}</h2>${body}</div>`;
+  const link = (u, l, cls='o') => u ? `<a class="btn ${cls}" href="${esc(u)}" target="_blank" rel="noopener">${l}</a>` : '';
+  const card = p => `<div class="pr"><h3>${esc(p.name)}</h3><small>${esc(p.tagline)}</small>
+    <div class="chips">${p.tech.map(x => `<span class="chip">${esc(x)}</span>`).join('')}</div>
+    <div class="a">${link(p.live,'LIVE &#9654;')}${link(p.github,'GITHUB')}</div></div>`;
+  const feat = d.projects.filter(p => p.featured), rest = d.projects.filter(p => !p.featured);
+  const proj = feat.map(card).join('');
+  const more = `<input id="q" placeholder="> filter ${rest.length} repositories..." aria-label="Filter repositories"><div class="projs" id="moreList">${rest.map(card).join('')}</div>`;
+  const contacts = [
+    ['EMAIL',`<a class="btn o" href="mailto:${esc(ct.email)}">${esc(ct.email)}</a>`],
+    ct.phone && ['PHONE',`<a class="btn o" href="tel:${esc(ct.phone)}">${esc(ct.phone)}</a>`],
+    ['GITHUB',link(ct.github,'github.com/Mohit01112')], ['LINKEDIN',link(ct.linkedin,'LinkedIn')]
+  ].filter(Boolean).map(([k,v]) => `<div style="margin-bottom:8px"><span class="tag">${k}</span><br>${v}</div>`).join('');
+  $('#grid').innerHTML =
+    `<div class="hello">&gt; ACCESS GRANTED // WELCOME, OPERATOR <em id="op"></em></div>` +
+    panel('PROFILE', `<p>${esc(d.summary)}</p><br><p><b style="color:#fff">${esc(ed.degree)}</b><br>${esc(ed.school)} &middot; ${esc(ed.year)}<br>CGPA: <b style="color:var(--green)">${esc(ed.cgpa)}</b></p>`) +
+    panel('EXPERIENCE', d.experience.map(x => `<p><b style="color:#fff">${esc(x.title)}</b><br>${esc(x.org)} &middot; ${esc(x.period)}</p><ul>${x.points.map(q=>`<li>${esc(q)}</li>`).join('')}</ul>`).join('')) +
+    panel('TECH STACK', `<div class="chips">${d.stack.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>`, true) +
+    panel('FEATURED PROJECTS', `<div class="projs">${proj}</div>`, true) +
+    panel('ALL REPOSITORIES (' + rest.length + ')', more, true) +
+    panel('HONORS &amp; CERTIFICATIONS', `<ul>${d.honors.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>`) +
+    panel('DIRECT CONTACT', contacts);
+  $('#op').textContent = handle;
+  $('#q').oninput = e => { const v = e.target.value.toLowerCase(); document.querySelectorAll('#moreList .pr').forEach(el => el.style.display = el.textContent.toLowerCase().includes(v) ? '' : 'none'); };
+}
+</script>
+</body>
+</html>

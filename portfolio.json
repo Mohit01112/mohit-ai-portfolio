@@ -1,0 +1,519 @@
+{
+ "name": "Mohit Jadhav",
+ "role": "AI & Data Science Engineer",
+ "summary": "B.E. in AI & Data Science, EPCET (2026) - CGPA 8.02. I build end-to-end ML systems, RAG pipelines and agentic AI applications.",
+ "education": {
+  "degree": "B.E. Artificial Intelligence & Data Science",
+  "school": "EPCET, Bangalore",
+  "year": "2026 (July)",
+  "cgpa": "8.02"
+ },
+ "experience": [
+  {
+   "title": "Data Science Intern",
+   "org": "Dyashin Technosoft Pvt. Ltd.",
+   "period": "Feb - May 2026",
+   "points": [
+    "Built SQL data pipelines for project and resource data",
+    "Performed EDA to surface demand patterns",
+    "Developed an AI-based Project Resource Demand Forecasting System"
+   ]
+  }
+ ],
+ "stack": [
+  "Python",
+  "PyTorch",
+  "TensorFlow",
+  "LangChain",
+  "LangGraph",
+  "RAG",
+  "FAISS",
+  "Pinecone",
+  "Flask",
+  "FastAPI",
+  "Docker",
+  "Streamlit",
+  "Pandas",
+  "NumPy",
+  "Scikit-learn",
+  "XGBoost"
+ ],
+ "projects": [
+  {
+   "name": "DataLens",
+   "tagline": "AI-Powered EDA & Dashboard Generator",
+   "tech": [
+    "Python",
+    "Pandas",
+    "Streamlit"
+   ],
+   "github": "https://github.com/Mohit01112/datalens",
+   "live": "https://datalens-epg8zxqbkm7bytqm5j3ff7.streamlit.app/",
+   "featured": true
+  },
+  {
+   "name": "DentAgent AI",
+   "tagline": "Dental Appointment Management System with LangGraph",
+   "tech": [
+    "LangGraph",
+    "LangChain",
+    "Flask"
+   ],
+   "github": "https://github.com/Mohit01112/DentAgent-AI",
+   "live": "https://dentagent-ai.onrender.com/",
+   "featured": true
+  },
+  {
+   "name": "Clinica AI",
+   "tagline": "RAG-Based Medical Report Assistant",
+   "tech": [
+    "RAG",
+    "Pinecone",
+    "Groq",
+    "Streamlit"
+   ],
+   "github": "https://github.com/Mohit01112/clinica-ai",
+   "live": "https://clinica-ai-ygxg8k9kwt9ptncpee2uez.streamlit.app/",
+   "featured": true
+  },
+  {
+   "name": "Finance-GPT",
+   "tagline": "Personal Finance Assistant with LSTM/XGBoost - 2nd Prize at VIBRATIONS",
+   "tech": [
+    "Flask",
+    "Groq API",
+    "LSTM",
+    "XGBoost"
+   ],
+   "github": "https://github.com/Mohit01112/-Finance-GPT-Your-Smart-Personal-Finance-Assistant",
+   "live": "https://finance-gpt-39qq.onrender.com/",
+   "featured": true
+  },
+  {
+   "name": "LocalAI Studio",
+   "tagline": "Desktop Local AI platform with React, TypeScript, Tauri, Rust",
+   "tech": [
+    "React",
+    "TypeScript",
+    "Tauri",
+    "Rust"
+   ],
+   "github": "https://github.com/Mohit01112/LocalAI-studio",
+   "live": "https://localai-studio-website.onrender.com/",
+   "featured": true
+  },
+  {
+   "name": "Oracle SQL Studio",
+   "tagline": "Offline-first Oracle SQL learning & practice desktop app",
+   "tech": [
+    "Python",
+    "SQL"
+   ],
+   "github": "https://github.com/Mohit01112/oracle-sql-studio",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Customer Churn Prediction",
+   "tagline": "Customer churn prediction model with Streamlit app",
+   "tech": [
+    "ANN",
+    "Streamlit"
+   ],
+   "github": "https://github.com/Mohit01112/Customer-Churn-Prediction",
+   "live": "https://customer-segmentation-sql-analysis-6q3may9mxwoqmchgctam7x.streamlit.app/",
+   "featured": false
+  },
+  {
+   "name": "LocalAI Studio Website",
+   "tagline": "Website for LocalAI Studio - discover local AI runtimes and models",
+   "tech": [
+    "Flask"
+   ],
+   "github": "https://github.com/Mohit01112/LocalAI-Studio-Website",
+   "live": "https://localai-studio-website.onrender.com/",
+   "featured": false
+  },
+  {
+   "name": "SmartClaim AI",
+   "tagline": "SmartClaim AI: AI-powered insurance claim verification using RAG and Groq",
+   "tech": [
+    "RAG",
+    "Groq"
+   ],
+   "github": "https://github.com/Mohit01112/SmartClaim-AI",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "research rag chatbot",
+   "tagline": "A RAG-based chatbot for research papers — upload a PDF and ask questions about it, powered by local embeddings and Groq's free LLM",
+   "tech": [
+    "RAG",
+    "Groq"
+   ],
+   "github": "https://github.com/Mohit01112/research-rag-chatbot",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Resume Genie (Streamlit)",
+   "tagline": "Resume scoring, cover letter generation & JD matching (Streamlit)",
+   "tech": [
+    "Streamlit",
+    "GenAI"
+   ],
+   "github": "https://github.com/Mohit01112/Resume-Genie-streamlit-",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Resume Genie",
+   "tagline": "🚀 An AI-powered career assistant that analyzes resumes, matches them with job descriptions, generates personalized cover letters, ",
+   "tech": [
+    "Python"
+   ],
+   "github": "https://github.com/Mohit01112/Resume-Genie",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Text2SQL AI Assistant",
+   "tagline": "An AI-powered Text-to-SQL assistant that converts natural language questions into executable SQL queries using LLMs, LangChain, My",
+   "tech": [
+    "RAG",
+    "LangChain",
+    "SQL"
+   ],
+   "github": "https://github.com/Mohit01112/Text2SQL-AI-Assistant",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Sustainability Chatbot",
+   "tagline": "Sustainability Chatbot is an AI-powered RAG application that answers questions about sustainability, packaging regulations, recycl",
+   "tech": [
+    "RAG"
+   ],
+   "github": "https://github.com/Mohit01112/Sustainability-Chatbot",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "CareerAssist AI",
+   "tagline": "An AI-powered career coaching application that analyzes resumes, provides personalized career guidance, answers career-related que",
+   "tech": [
+    "Groq"
+   ],
+   "github": "https://github.com/Mohit01112/CareerAssist-AI",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Sarvam Knowledge Chatbot",
+   "tagline": "A RAG-powered AI chatbot that lets users interact with PDF documents and retrieve accurate, context-aware answers using LangChain,",
+   "tech": [
+    "RAG",
+    "Groq",
+    "LangChain",
+    "FAISS"
+   ],
+   "github": "https://github.com/Mohit01112/Sarvam-Knowledge-Chatbot",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Acadexa",
+   "tagline": "AI-powered academic intelligence platform for PDF-based Q&A, RAG, semantic search, and automated essay grading using LLMs",
+   "tech": [
+    "RAG"
+   ],
+   "github": "https://github.com/Mohit01112/Acadexa",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "elephant species classification",
+   "tagline": "🐘 Deep Learning-powered Elephant Species Classification with MobileNetV2 & Flask. Upload an image to identify African or Asian ele",
+   "tech": [
+    "Flask",
+    "MobileNetV2"
+   ],
+   "github": "https://github.com/Mohit01112/elephant-species-classification",
+   "live": "https://elephant-species-classification.onrender.com/",
+   "featured": false
+  },
+  {
+   "name": "movie recommendation system",
+   "tagline": "Movie recommendation system (ML) with TMDB posters",
+   "tech": [
+    "Scikit-learn",
+    "Flask"
+   ],
+   "github": "https://github.com/Mohit01112/movie-recommendation-system",
+   "live": "https://movie-recommendation-system-r3e5.onrender.com/",
+   "featured": false
+  },
+  {
+   "name": "solar panel fault classification",
+   "tagline": "AI-powered solar panel defect classification system using EfficientNet deep learning and Flask to detect and classify common photo",
+   "tech": [
+    "Flask",
+    "EfficientNet"
+   ],
+   "github": "https://github.com/Mohit01112/solar-panel-fault-classification",
+   "live": "https://solar-panel-fault-classification.onrender.com/",
+   "featured": false
+  },
+  {
+   "name": "DSA",
+   "tagline": "Data structures & algorithms solutions",
+   "tech": [
+    "DSA"
+   ],
+   "github": "https://github.com/Mohit01112/dsa",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Cancer Risk Prediction System",
+   "tagline": "🩺 Cancer Risk Prediction System using Machine Learning, XGBoost, and Flask",
+   "tech": [
+    "Flask",
+    "XGBoost"
+   ],
+   "github": "https://github.com/Mohit01112/Cancer-Risk-Prediction-System",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Agentic AI Practice",
+   "tagline": "Agentic AI practice: tool-calling notebooks",
+   "tech": [
+    "LangChain",
+    "Agents"
+   ],
+   "github": "https://github.com/Mohit01112/AGENTIC-AI",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "weather agent",
+   "tagline": "agent which gives the result by using the gemini as llm and duckduckgo search as the searching tool",
+   "tech": [
+    "Gemini"
+   ],
+   "github": "https://github.com/Mohit01112/weather-agent",
+   "live": "https://weather-agent-3e6fep5kupz52pmthhvqza.streamlit.app/",
+   "featured": false
+  },
+  {
+   "name": "RAG Practice",
+   "tagline": "RAG systems practice with Ollama",
+   "tech": [
+    "RAG",
+    "Ollama"
+   ],
+   "github": "https://github.com/Mohit01112/RAG-practice",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "DocuMind AI",
+   "tagline": "AI-powered PDF chatbot built with Streamlit, LangChain, FAISS, Hugging Face Embeddings, and OpenRouter using RAG for intelligent d",
+   "tech": [
+    "RAG",
+    "Streamlit",
+    "LangChain",
+    "FAISS"
+   ],
+   "github": "https://github.com/Mohit01112/DocuMind-AI",
+   "live": "https://9hgk7rbmfkivwapevd3agt.streamlit.app/",
+   "featured": false
+  },
+  {
+   "name": "DataPilot",
+   "tagline": "Agent- and tool-based data analysis app",
+   "tech": [
+    "Agents",
+    "Python"
+   ],
+   "github": "https://github.com/Mohit01112/DATAPILOT",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Garment Sewing Time Predictor",
+   "tagline": "An end-to-end ML project that estimates garment production sewing time based on garment type, order quantity, and stitch operation",
+   "tech": [
+    "Python"
+   ],
+   "github": "https://github.com/Mohit01112/Mohit01112-ML-Based-Garment-Sewing-Time-Predictor",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Student Performance Predictor",
+   "tagline": "A machine learning web application that predicts student academic performance based on various factors using Flask and Scikit-lear",
+   "tech": [
+    "Flask"
+   ],
+   "github": "https://github.com/Mohit01112/Student_Performance_Predictor",
+   "live": "https://student-performance-predictor-4dvr.onrender.com/",
+   "featured": false
+  },
+  {
+   "name": "Next Word Prediction (LSTM)",
+   "tagline": "Next-word prediction with LSTM RNN (trained on Hamlet)",
+   "tech": [
+    "LSTM",
+    "TensorFlow",
+    "Streamlit"
+   ],
+   "github": "https://github.com/Mohit01112/LSTM-RNN",
+   "live": "https://lstm-rnn-c6hrjfptww89j2vzwdahbn.streamlit.app/",
+   "featured": false
+  },
+  {
+   "name": "Movie Review Analysis (Simple RNN)",
+   "tagline": "IMDB movie review sentiment analysis with a simple RNN",
+   "tech": [
+    "RNN",
+    "TensorFlow",
+    "Streamlit"
+   ],
+   "github": "https://github.com/Mohit01112/movie-review-anlaysis-using-simple-RNN",
+   "live": "https://movie-review-anlaysis-using-simple-rnn-bvazbldvc5qrbobhu4sa39.streamlit.app/",
+   "featured": false
+  },
+  {
+   "name": "CSV Q&A Agent",
+   "tagline": "CSV / data Q&A AI agent",
+   "tech": [
+    "LLM",
+    "Agents"
+   ],
+   "github": "https://github.com/Mohit01112/kind-turing",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Data Science Journey",
+   "tagline": "Learning journey: NLP, Flask, feature engineering, decision trees",
+   "tech": [
+    "Python",
+    "ML"
+   ],
+   "github": "https://github.com/Mohit01112/data-science-journey",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "GeoEats",
+   "tagline": "An end-to-end cloud kitchen location intelligence platform using an XGBoost machine learning model and spatial engineering to pred",
+   "tech": [
+    "XGBoost"
+   ],
+   "github": "https://github.com/Mohit01112/geoeats",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "customer segmentation sql analysis",
+   "tagline": "Customer segmentation project using MySQL to analyze purchase behavior and classify customers into Bronze, Silver, and Gold tiers ",
+   "tech": [
+    "SQL"
+   ],
+   "github": "https://github.com/Mohit01112/customer-segmentation-sql-analysis",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Algerian forest fires prediction",
+   "tagline": "Algerian forest fires prediction web app",
+   "tech": [
+    "ML",
+    "Flask",
+    "AWS EB"
+   ],
+   "github": "https://github.com/Mohit01112/Algerian_forest_fires-prediction",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "trader performance market sentiment",
+   "tagline": "Analysis of trader performance and behavior under different market sentiment regimes (Fear, Greed, Neutral) using Hyperliquid trad",
+   "tech": [
+    "Python"
+   ],
+   "github": "https://github.com/Mohit01112/trader-performance-market-sentiment",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "datascience projects",
+   "tagline": "Daily data science practice projects (EDA, Power BI, ML)",
+   "tech": [
+    "EDA",
+    "Power BI"
+   ],
+   "github": "https://github.com/Mohit01112/datascience_projects",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "MLflow Experiments",
+   "tagline": "MLflow experiment tracking demo",
+   "tech": [
+    "MLflow"
+   ],
+   "github": "https://github.com/Mohit01112/mlflow-experiments",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Network Security",
+   "tagline": "Network security ML pipeline",
+   "tech": [
+    "Python",
+    "MLOps"
+   ],
+   "github": "https://github.com/Mohit01112/networksecurity",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "Fake and real news prediction",
+   "tagline": "Fake vs real news classifier",
+   "tech": [
+    "NLP",
+    "Flask"
+   ],
+   "github": "https://github.com/Mohit01112/Fake_and_real_news_prediction",
+   "live": "",
+   "featured": false
+  },
+  {
+   "name": "crypto price prediction",
+   "tagline": "Cryptocurrency price prediction with machine learning",
+   "tech": [
+    "ML",
+    "Python"
+   ],
+   "github": "https://github.com/Mohit01112/crypto-price-prediction",
+   "live": "",
+   "featured": false
+  }
+ ],
+ "honors": [
+  "ET-AI Hackathon 2026 - Semi-Finalist",
+  "VIBRATIONS Technical Event - 2nd Prize",
+  "Data Science & GenAI bootcamps and certifications"
+ ],
+ "contact": {
+  "email": "rajemohit330@gmail.com",
+  "phone": "",
+  "github": "https://github.com/Mohit01112",
+  "linkedin": "https://www.linkedin.com/in/mohit-jadhav-49734427b/"
+ }
+}
